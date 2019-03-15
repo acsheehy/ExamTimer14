@@ -1,0 +1,356 @@
+﻿<Window 
+    xmlns:ExamTimer14="clr-namespace:ExamTimer14"  x:Class="ExamTimer14.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="490" Width="525" Icon="Resources/westicocol.ico" MinHeight="490" MinWidth="525" Closing="Window_Closing" >
+    <Window.Resources>
+        <DataTemplate x:Key="ExamInfoTemplate">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Grid.Row="0" Text="{Binding Path=ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="1" Grid.Row="0" Text="{Binding Path=StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="2" Grid.Row="0" Text="{Binding Path=FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="3" Grid.Row="0" Text="{Binding Path=PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBlock Grid.Column="4" Grid.Row="0" Text="{Binding Path=PlusFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+                <Grid Grid.Column="5" Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Viewbox Grid.Row="0">
+                        <Button Content="X"/>
+                    </Viewbox>
+                    <Viewbox Grid.Row="1">
+                        <Button Content="Change"/>
+                    </Viewbox>
+                </Grid>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.MouseMove">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnAdd"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnAdd"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnSettings"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnSettings"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam1Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam1Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam1Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam1Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam2Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam2Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam2Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam2Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam3Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam3Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam3Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam3Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam4Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam4Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam4Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam4Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam5Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam5Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam5Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam5Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam6Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam6Del"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam6Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="1" Duration="0:0:1" />
+                    <DoubleAnimation
+                        Storyboard.TargetName="btnExam6Edit"
+                        Storyboard.TargetProperty="Opacity"
+                        From="1" To="0" Duration="0:0:1" 
+                        BeginTime="0:0:10"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="3*" />
+            <RowDefinition />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="30" />
+            <RowDefinition MinHeight="29" />
+        </Grid.RowDefinitions>
+        <Viewbox Grid.Row="0" Grid.ColumnSpan="7">
+            <TextBlock TextAlignment="Center" Text="{Binding Path=CentreHeading}"  />
+        </Viewbox>
+        <Viewbox Grid.Row="1" Grid.ColumnSpan="7">
+            <TextBlock TextAlignment="Center" Text="{Binding Path=ExamDate}" />
+        </Viewbox>
+        <Viewbox Grid.Row="2" Grid.ColumnSpan="7">
+            <ExamTimer14:ExamClock x:Name="MainClock" />
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left">
+            <TextBlock TextAlignment="Left" Text="Exam Name" Margin="5,0"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="1">
+            <TextBlock TextAlignment="Center" Text="Start" Margin="5,0"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="2">
+            <TextBlock TextAlignment="Center" Text="Finish" Margin="5,0"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="3">
+            <TextBlock TextAlignment="Center" Text="+25%" Margin="5,0"/>
+        </Viewbox>
+        <Viewbox Grid.Row="3" Grid.Column="4">
+            <TextBlock TextAlignment="Center" Text="+50%" Margin="5,0"/>
+        </Viewbox>
+
+        <!--First Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="4" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam1.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam1.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam1.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam1.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam1.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam1.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam1.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam1.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam1.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="4" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam1.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam1.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam1.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="5" Grid.Row="4" VerticalAlignment="Center">
+            <Button Name="btnExam1Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam1Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam1Del_Click" />
+            <Button Name="btnExam1Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam1Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam1Edit_Click"/>
+        </StackPanel>
+
+        <!--Second Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="5" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam2.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="5" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam2.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam2.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="5" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam2.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam2.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam2.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="5" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam2.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam2.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam2.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="5" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam2.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam2.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam2.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="5" Grid.Row="5" VerticalAlignment="Center">
+            <Button Name="btnExam2Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam2Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam2Del_Click"/>
+            <Button Name="btnExam2Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam2Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam2Edit_Click"/>
+        </StackPanel>
+
+        <!--Third Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="6" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam3.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="6" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam3.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam3.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="6" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam3.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam3.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding Path=Exam3.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="6" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam3.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam3.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam3.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="6" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam3.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam3.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam3.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="6" Grid.Row="6" VerticalAlignment="Center">
+            <Button Name="btnExam3Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam3Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam3Del_Click" />
+            <Button Name="btnExam3Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam3Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam3Edit_Click"/>
+        </StackPanel>
+
+        <!--Forth Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="7" HorizontalAlignment="Left" VerticalAlignment="Center" >
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam4.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="7" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam4.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam4.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="7" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam4.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam4.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding Path=Exam4.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="7" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam4.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam4.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam4.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="7" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam4.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam4.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam4.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="6" Grid.Row="7" VerticalAlignment="Center">
+            <Button Name="btnExam4Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam4Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam4Del_Click"/>
+            <Button Name="btnExam4Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam4Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam4Edit_Click"/>
+        </StackPanel>
+
+        <!--Fifth Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="8" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam5.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="8" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam5.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam5.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="8" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam5.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam5.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding Path=Exam5.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="8" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam5.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam5.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam5.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="8" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam5.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam5.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam5.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="5" Grid.Row="8" VerticalAlignment="Center">
+            <Button Name="btnExam5Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam5Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam5Del_Click" />
+            <Button Name="btnExam5Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam5Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam5Edit_Click"/>
+        </StackPanel>
+
+        <!--Sixth Data Line-->
+        <Viewbox Grid.Column="0" Grid.Row="9" HorizontalAlignment="Left" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam6.ExamName,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="1" Grid.Row="9" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam6.StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam6.StartTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="2" Grid.Row="9" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam6.FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam6.FinishTimeColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"  Visibility="{Binding Path=Exam6.FinishTimeVisibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="3" Grid.Row="9" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam6.PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam6.PlusTFiveColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam6.ExtraTFiveVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <Viewbox Grid.Column="4" Grid.Row="9" VerticalAlignment="Center">
+            <TextBlock Margin="2,0" Text="{Binding Path=Exam6.PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Foreground="{Binding Path=Exam6.PlusFiftyColour,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Visibility="{Binding Path=Exam6.ExtraFiftyVisible,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+        </Viewbox>
+        <StackPanel Grid.Column="5" Grid.Row="9" VerticalAlignment="Center">
+            <Button Name="btnExam6Del" Content="X" FontSize="8" Width="20" Visibility="{Binding Path=Exam6Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam6Del_Click"/>
+            <Button Name="btnExam6Edit" Content="Edit" FontSize="8" Width="20" Visibility="{Binding Path=Exam6Visibility,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Click="btnExam6Edit_Click"/>
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="6" Grid.Row="10" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,2">
+            <Button Name="btnAdd" Click="btnAdd_Click" Margin="10,0" Width="60" Height="25">
+                <TextBlock Text="Add" Margin="2" />
+            </Button>
+            <Button Name="btnSettings" Margin="10,0" Click="btnSettings_Click" Width="60" Height="25" >
+                <TextBlock Text="Settings" Margin="2" />
+            </Button>
+        </StackPanel>
+    </Grid>
+</Window>

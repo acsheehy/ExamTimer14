@@ -1,0 +1,36 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Custom="http://schemas.AvalonControls/AvalonControlsLibrary/Controls" 
+        xmlns:local="clr-namespace:ExamTimer14" 
+        x:Class="ExamTimer14.EditExam"
+        Title="Edit Exam" Height="310" Width="400" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" Icon="Resources/westicocol.ico">
+    <Window.Resources>
+        <local:IntConverter x:Key="IntConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Label Content="Exam name:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="130,14,0,0" Text="{Binding ExamName, Mode=TwoWay}" VerticalAlignment="Top" Width="245"/>
+        <Label Content="Start time:" HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top"/>
+
+
+        <Custom:TimePicker HorizontalAlignment="Left" Margin="130,43,0,0" VerticalAlignment="Top" BorderThickness="0" SelectedSecond="0" SelectedTime="{Binding StartTimeSpan, Mode=TwoWay}" />
+        <Label Content="Duration:" HorizontalAlignment="Left" Margin="10,74,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtDuration" HorizontalAlignment="Left" Height="23" Margin="130,78,0,0" Text="{Binding Duration, Converter={StaticResource IntConverter}, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="minutes" HorizontalAlignment="Left" Margin="255,74,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Plus 25%" HorizontalAlignment="Left" Margin="130,106,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=ExtraTFiveEnabled,Mode=TwoWay}"/>
+        <CheckBox Content="Plus 50%" HorizontalAlignment="Left" Margin="130,126,0,0" VerticalAlignment="Top" IsChecked="{Binding Path=ExtraFiftyEnabled,Mode=TwoWay}"/>
+        <Label Content="Start Time" HorizontalAlignment="Left" Margin="45,141,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,146,0,0" Text="{Binding Path=StartTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Finish Time" HorizontalAlignment="Left" Margin="45,162,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,167,0,0" Text="{Binding Path=FinishTimeString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="+25% Time" HorizontalAlignment="Left" Margin="45,183,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,188,0,0" Text="{Binding Path=PlusTFiveString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Label Content="+50% Time" HorizontalAlignment="Left" Margin="45,204,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,209,0,0" Text="{Binding Path=PFiftyString,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="120"/>
+        <Button Name="btnOK" Content="OK" HorizontalAlignment="Left" Margin="218,241,0,0" VerticalAlignment="Top" Width="75" Click="btnOK_Click" IsDefault="True"/>
+        <Button Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="100,241,0,0" VerticalAlignment="Top" Width="75" IsCancel="True" Click="btnCancel_Click"/>
+
+
+    </Grid>
+</Window>
