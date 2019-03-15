@@ -6,3 +6,5 @@ The Exam Timer is a C# on Windows project for displaying a timer during public e
 The solution relies on the OpenSource Avalon Controls Library v2.0 by Marlon Grech. You will need this library to compile the project yourself. Requires DotNet 4.5 on Windows. See the Wiki for more details.
 
 The latest installed can be found here: https://github.com/westminsterschoolit/ExamTimer14/raw/master/ExamTimerInstaller/ExamTimerInstaller-SetupFiles/ExamTimerInstaller.msi
+
+Usage instructions can be found here: https://github.com/westminsterschoolit/ExamTimer14/wiki/Use
